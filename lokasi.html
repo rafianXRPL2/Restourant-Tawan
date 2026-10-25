@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lokasi Outlet - Ta Wan Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Hero Header Lokasi */
+    header.hero-banner {
+      background: linear-gradient(to top, rgba(17, 10, 10, 0.88), rgba(142, 22, 22, 0.65)), 
+                  url("Gambar/image copy 14.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 380px;
+    }
+
+    .lokasi-container {
+      max-width: 1240px;
+      margin: 40px auto 60px auto;
+      padding: 0 20px;
+    }
+
+    .lokasi-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .lokasi-intro h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .lokasi-intro p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Layout 2 Kolom Peta & Daftar Outlet */
+    .location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .map-wrapper {
+      position: sticky;
+      top: 100px;
+      background: #FFFFFF;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .map-wrapper:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 480px;
+      border: 0;
+      border-radius: var(--radius-sm);
+      display: block;
+    }
+
+    .map-caption {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .map-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-subtle);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+    }
+
+    /* List Card Outlet */
+    .loccard {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cardloc {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      transition: var(--transition);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cardloc::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent-gold) 0%, var(--primary) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .cardloc:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-md);
+      border-color: #E2CECE;
+    }
+
+    .cardloc:hover::before {
+      opacity: 1;
+    }
+
+    .loc-icon-bubble {
+      width: 46px;
+      height: 46px;
+      min-width: 46px;
+      border-radius: 50%;
+      background: var(--primary-subtle);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid #F1D4D4;
+      transition: var(--transition);
+    }
+
+    .cardloc:hover .loc-icon-bubble {
+      background: var(--primary);
+      color: #FFFFFF;
+      transform: scale(1.1);
+    }
+
+    .cardloc .teks {
+      flex: 1;
+      padding: 0;
+    }
+
+    .cardloc .teks h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .cardloc .teks p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .loc-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      font-size: 12.5px;
+      color: #554D4D;
+    }
+
+    .loc-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .loc-hours {
+      color: #2E7D32;
+      font-weight: 600;
+    }
+
+    .btn-directions {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-directions:hover {
+      color: var(--primary-dark);
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 900px) {
+      .location {
+        grid-template-columns: 1fr;
+      }
+
+      .map-wrapper {
+        position: static;
+      }
+
+      .map-wrapper iframe {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav>
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo-link">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan" />
+      </a>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="berita.html">Berita & Promo</a></li>
+        <li><a href="lokasi.html" class="active">Outlet</a></li>
+      </ul>
+      <a href="sudah login/login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header Lokasi -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Temukan Kami</div>
+      <h1>Gerai Outlet Ta Wan</h1>
+      <h3>Kunjungi outlet Ta Wan terdekat di kota Anda dan nikmati kehangatan sajian Chinese food halal bersama keluarga dan sahabat terdekat.</h3>
+    </div>
+  </header>
+
+  <!-- Konten Utama Lokasi -->
+  <main class="lokasi-container">
+    <div class="lokasi-intro">
+      <span class="section-tag">Cabang Pilihan</span>
+      <h2>Daftar Outlet Area Jabodetabek</h2>
+      <p>Pilih gerai terdekat untuk petunjuk arah dan informasi jam operasional</p>
+    </div>
+
+    <div class="location">
+      <!-- Kolom Kiri: Peta Google Maps Embed -->
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d63462.967174789956!2d106.894360504912!3d-6.206150846014265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sTa%20wan!5e0!3m2!1sid!2sid!4v1768201137880!5m2!1sid!2sid" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Peta Lokasi Ta Wan">
+        </iframe>
+        <div class="map-caption">
+          <span class="map-badge">📍 90+ Outlet di Indonesia</span>
+          <span>Google Maps Interaktif</span>
+        </div>
+      </div>
+
+      <!-- Kolom Kanan: Kartu Outlet -->
+      <div class="loccard">
+        <!-- Outlet 1 -->
+        <article class="cardloc">
+          <div class="loc-icon-bubble">📍</div>
+          <div class="teks">
+            <h2>Ta Wan Kelapa Gading</h2>
+            <p>Mall Kelapa Gading, Jl. Boulevard Raya No.3, RT.13/RW.18, Kelapa Gading Timur, Kec. Kelapa Gading, Jakarta Utara, DKI Jakarta 14240</p>
+            <div class="loc-meta">
+              <span class="loc-meta-item loc-hours">🕒 10.00 - 22.00 WIB</span>
+              <span class="loc-meta-item">📞 (021) 4585-3733</span>
+            </div>
+            <a href="https://maps.google.com/?q=Ta+Wan+Mall+Kelapa+Gading" target="_blank" rel="noopener" class="btn-directions">Lihat di Google Maps &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Outlet 2 -->
+        <article class="cardloc">
+          <div class="loc-icon-bubble">📍</div>
+          <div class="teks">
+            <h2>Ta Wan Buaran Plaza</h2>
+            <p>Buaran Plaza, Jl. Raden Intan Raya Lantai Dasar Unit 17F, RT.8/RW.14, Klender, Kec. Duren Sawit, Jakarta Timur, DKI Jakarta 13470</p>
+            <div class="loc-meta">
+              <span class="loc-meta-item loc-hours">🕒 10.00 - 21.30 WIB</span>
+              <span class="loc-meta-item">📞 (021) 8660-1200</span>
+            </div>
+            <a href="https://maps.google.com/?q=Ta+Wan+Buaran+Plaza" target="_blank" rel="noopener" class="btn-directions">Lihat di Google Maps &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Outlet 3 -->
+        <article class="cardloc">
+          <div class="loc-icon-bubble">📍</div>
+          <div class="teks">
+            <h2>Ta Wan AEON Mall Jakarta Garden City</h2>
+            <p>AEON Mall JGC Ground Floor, Jl. Jakarta Garden City Boulevard, RT.8/RW.6, Cakung Timur, Jakarta Timur, DKI Jakarta 13910</p>
+            <div class="loc-meta">
+              <span class="loc-meta-item loc-hours">🕒 10.00 - 22.00 WIB</span>
+              <span class="loc-meta-item">📞 (021) 2246-3200</span>
+            </div>
+            <a href="https://maps.google.com/?q=Ta+Wan+Aeon+Mall+Jakarta+Garden+City" target="_blank" rel="noopener" class="btn-directions">Lihat di Google Maps &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Outlet 4 -->
+        <article class="cardloc">
+          <div class="loc-icon-bubble">📍</div>
+          <div class="teks">
+            <h2>Ta Wan Mall Cipinang Indah</h2>
+            <p>Mall Cipinang Indah, Ground Floor, Jl. Raya Kalimalang No.88, RT.18/RW.3, Pondok Bambu, Kec. Duren Sawit, Jakarta Timur, DKI Jakarta 13420</p>
+            <div class="loc-meta">
+              <span class="loc-meta-item loc-hours">🕒 10.00 - 22.00 WIB</span>
+              <span class="loc-meta-item">📞 (021) 2948-6922</span>
+            </div>
+            <a href="https://maps.google.com/?q=Ta+Wan+Mall+Cipinang+Indah" target="_blank" rel="noopener" class="btn-directions">Lihat di Google Maps &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan">
+        <p>Restoran Chinese Food modern bersertifikat Halal dengan tradisi rasa sejak 1996, menghadirkan kehangatan di setiap momen kebersamaan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi Halaman</h4>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="menu.html">Menu Kami</a></li>
+          <li><a href="lokasi.html">Lokasi Outlet</a></li>
+          <li><a href="berita.html">Berita & Promo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Media Sosial & Info</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@tawanrestaurant.id?_r=1&_t=ZS-93fK8hDZHgv" target="_blank" rel="noopener">TikTok Ta Wan</a></li>
+          <li><a href="https://youtube.com/@tawanrestaurant?si=plVAySytzFN2A_2t" target="_blank" rel="noopener">YouTube Channel</a></li>
+          <li><a href="https://share.google/8XZzWOHXrTtc4MLb2" target="_blank" rel="noopener">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Ta Wan Restaurant. Dibuat dengan HTML, CSS, dan JavaScript murni.
+    </div>
+  </footer>
+</body>
+</html>

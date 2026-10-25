@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ta Wan Restaurant - Hangatkan Kebersamaan</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Styling Spesifik Halaman Home */
+    header.hero-banner {
+      background: linear-gradient(to top, rgba(17, 10, 10, 0.88), rgba(142, 22, 22, 0.65)), 
+                  url("Gambar/image copy 10.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 440px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav>
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo-link">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan" />
+      </a>
+      <ul>
+        <li><a href="home.html" class="active">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="berita.html">Berita & Promo</a></li>
+        <li><a href="lokasi.html">Outlet</a></li>
+      </ul>
+      <a href="sudah login/login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Est. 1996 • Authentic Chinese Cuisine</div>
+      <h1>Discover Ta Wan</h1>
+      <h3>Restoran Chinese modern dan autentik yang menghadirkan kehangatan rasa dan tradisi sejak tahun 1996 di Indonesia.</h3>
+    </div>
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="main-content">
+    <!-- Section 1: Tentang Kami -->
+    <section class="section">
+      <div class="img-frame">
+        <img src="Gambar/tentang.jpg" alt="Suasana Restoran Ta Wan">
+      </div>
+      <div class="teks">
+        <span class="section-tag">Tentang Kami</span>
+        <h2>Menghadirkan Kehangatan di Setiap Kebersamaan</h2>
+        <p>Berawal dari sebuah restoran bubur legendaris pada tahun 1996, Ta Wan telah berkembang pesat menjadi jaringan restoran Chinese food ternama bersertifikat Halal Grade A dengan lebih dari 90 outlet di Indonesia. Ta Wan menyajikan hidangan khas dengan citarasa yang mengingatkan kita pada kehangatan masakan rumah.</p>
+        <a href="tentang.html">Tentang Kami &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Section 2: Menu Favorit -->
+    <section class="section">
+      <div class="img-frame">
+        <img src="Gambar/image copy 12.png" alt="Sajian Menu Spesial Ta Wan">
+      </div>
+      <div class="teks">
+        <span class="section-tag gold">Menu Pilihan</span>
+        <h2>Santapan Lezat yang Memberi Kenangan</h2>
+        <p>Nikmati perpaduan klasik Chinese food yang menjadi primadona keluarga dari generasi ke generasi. Mulai dari kelembutan Bubur Spesial 3 Rasa, Mie Goreng Ulang Tahun, hingga hidangan Sapo Terong dan Seafood pilihan yang kaya bumbu.</p>
+        <a href="menu.html">Jelajahi Menu &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Section 3: Outlet & Lokasi -->
+    <section class="section">
+      <div class="img-frame">
+        <img src="Gambar/image copy 14.png" alt="Outlet Ta Wan">
+      </div>
+      <div class="teks">
+        <span class="section-tag">Jaringan Restoran</span>
+        <h2>Kami Selalu Dekat Bersama Anda</h2>
+        <p>Sebagai jaringan restoran Chinese food dengan jumlah outlet terbanyak di Indonesia, Anda selalu dapat menikmati momen bersantap hangat di berbagai pusat perbelanjaan terkemuka di kota Anda.</p>
+        <a href="lokasi.html">Lihat Lokasi Outlet &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Section Berita & Promo -->
+    <div class="b-s">
+      <div>
+        <span class="section-tag">Update & Penawaran</span>
+        <h2>Berita & Promo Terbaru</h2>
+      </div>
+      <a href="berita.html">Lihat Semua Promo &rarr;</a>
+    </div>
+
+    <!-- Cards Berita -->
+    <div class="box">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Gambar/gajian.jpeg" alt="Promo Gajian Ta Wan">
+        </div>
+        <p class="card-desc">Waktunya gajian, saatnya serbu Pay Day Fortune di Ta Wan dengan menu hemat berdua hingga berempat!</p>
+        <button type="button" onclick="openModal('popup-home-1')">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Gambar/natal.png" alt="Spesial Natal Ta Wan">
+        </div>
+        <p class="card-desc">Momen Natal lebih istimewa dengan kehangatan rasa yang menyatukan seluruh keluarga tercinta.</p>
+        <button type="button" onclick="openModal('popup-home-2')">Baca Selengkapnya</button>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <img src="Gambar/peanut.jpeg" alt="Peanut Series Ta Wan">
+        </div>
+        <p class="card-desc">Setiap suapan dari Peanut Series menghadirkan kehangatan tersendiri dengan gurihnya saus kacang istimewa.</p>
+        <button type="button" onclick="openModal('popup-home-3')">Baca Selengkapnya</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- POPUP MODALS HOME -->
+  <!-- Modal 1 -->
+  <div class="popup" id="popup-home-1">
+    <div class="popup-content">
+      <h3>Pay Day Fortune Ta Wan</h3>
+      <p>Waktunya gajian, saatnya serbu Pay Day Fortune di Ta Wan! 🥳
+      
+Rayakan momen gajian dengan memanjakan diri sendiri dan orang-orang tersayang. Tak perlu repot, solusinya ada di Ta Wan!
+
+Dengan memanfaatkan Promo Pay Day Fortune, gajian makin hoki, makan makin hemat. Hadir mulai dari Rp 179.000* sudah termasuk hidangan lauk utama, sayur segar, dan berbagai menu pelengkap. Porsinya pas untuk dinikmati berdua bahkan berempat.</p>
+      <button class="close" type="button" onclick="closeModal('popup-home-1')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="popup" id="popup-home-2">
+    <div class="popup-content">
+      <h3>Kehangatan Natal di Ta Wan</h3>
+      <p>Natal lebih istimewa dengan kehangatan yang menyatukan keluarga. ✨
+
+Di setiap meja, ada cerita yang dibagi. Di setiap hidangan hangat, ada rasa yang mendekatkan. Ta Wan senantiasa siap menemani kebersamaan di hari raya yang penuh suka cita.
+
+Selamat Hari Natal untuk seluruh Sobat Ta Wan yang merayakan!</p>
+      <button class="close" type="button" onclick="closeModal('popup-home-2')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="popup" id="popup-home-3">
+    <div class="popup-content">
+      <h3>Spesial Peanut Series Ta Wan</h3>
+      <p>Setiap suapan dari Peanut Series menghadirkan kehangatan tersendiri dengan gurihnya kacang dan manisnya kebersamaan.
+
+Nikmati pilihan menu spesial:
+🍜 Mie Goreng Nyemek Saus Kacang — kuah kental hangat berpadu mi kenyal yang lembut dan mengenyangkan.
+🌶️ Mie Goreng Saus Kacang a la Szechuan — sensasi pedas menggigit dengan gurih kacang khas oriental.
+🍗 Ayam Saus Kacang Oriental — potongan ayam juicy berbalut saus kacang lembut bercitarasa manis gurih.</p>
+      <button class="close" type="button" onclick="closeModal('popup-home-3')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan">
+        <p>Restoran Chinese Food modern bersertifikat Halal dengan tradisi rasa sejak 1996, menghadirkan kehangatan di setiap momen kebersamaan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi Halaman</h4>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="menu.html">Menu Kami</a></li>
+          <li><a href="lokasi.html">Lokasi Outlet</a></li>
+          <li><a href="berita.html">Berita & Promo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Media Sosial & Info</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@tawanrestaurant.id?_r=1&_t=ZS-93fK8hDZHgv" target="_blank" rel="noopener">TikTok Ta Wan</a></li>
+          <li><a href="https://youtube.com/@tawanrestaurant?si=plVAySytzFN2A_2t" target="_blank" rel="noopener">YouTube Channel</a></li>
+          <li><a href="https://share.google/8XZzWOHXrTtc4MLb2" target="_blank" rel="noopener">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Ta Wan Restaurant. Dibuat dengan HTML, CSS, dan JavaScript murni.
+    </div>
+  </footer>
+
+  <!-- Interaktif Script Modal Popup -->
+  <script>
+    function openModal(id) {
+      var modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add("show");
+      }
+    }
+
+    function closeModal(id) {
+      var modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove("show");
+      }
+    }
+
+    // Kompatibilitas fungsi bawaan openPopup dan closePopup
+    function openPopup() {
+      openModal("popup-home-1");
+    }
+
+    function closePopup() {
+      var popups = document.querySelectorAll(".popup");
+      popups.forEach(function(p) {
+        p.classList.remove("show");
+      });
+    }
+
+    // Tutup popup jika area latar belakang di luar konten diklik
+    window.addEventListener("click", function(event) {
+      if (event.target.classList.contains("popup")) {
+        event.target.classList.remove("show");
+      }
+    });
+
+    // Tutup dengan tombol Escape di keyboard
+    window.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>

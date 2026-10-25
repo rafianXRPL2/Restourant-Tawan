@@ -1,0 +1,143 @@
+/* css/berita.css - Pelengkap styling halaman Berita & Promo */
+
+.berita-container {
+  max-width: 1240px;
+  margin: 40px auto 60px auto;
+  padding: 0 20px;
+}
+
+.berita-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.berita-header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--primary, #8E1616);
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.berita-header p {
+  color: var(--text-muted, #665E5E);
+  font-size: 15.5px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.news-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #EFE8DE;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(142, 22, 22, 0.14);
+  border-color: #E2CECE;
+}
+
+.news-card-img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  background-color: #F8F5F0;
+}
+
+.news-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-card-img img {
+  transform: scale(1.08);
+}
+
+.news-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(142, 22, 22, 0.9);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.news-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.news-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1F1D1D;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.news-card:hover .news-card-title {
+  color: #8E1616;
+}
+
+.news-card-snippet {
+  font-size: 14px;
+  color: #665E5E;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: linear-gradient(135deg, #8E1616 0%, #6B0E0E 100%);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(142, 22, 22, 0.2);
+}
+
+.news-btn:hover {
+  background: linear-gradient(135deg, #A82424 0%, #8E1616 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(142, 22, 22, 0.35);
+}

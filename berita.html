@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berita & Promo - Ta Wan Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/berita.css" />
+  <style>
+    /* Hero Header Berita */
+    header.hero-banner {
+      background: linear-gradient(to top, rgba(17, 10, 10, 0.88), rgba(142, 22, 22, 0.65)), 
+                  url("Gambar/image copy 11.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 380px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigasi -->
+  <nav>
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo-link">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan" />
+      </a>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="berita.html" class="active">Berita & Promo</a></li>
+        <li><a href="lokasi.html">Outlet</a></li>
+      </ul>
+      <a href="sudah login/login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Kabar Hangat Ta Wan</div>
+      <h1>Berita, Acara & Promo Spesial</h1>
+      <h3>Dapatkan informasi penawaran istimewa, diskon eksklusif, dan peluncuran menu terbaru untuk menyempurnakan santapan bersama orang terkasih.</h3>
+    </div>
+  </header>
+
+  <!-- Kontainer Berita -->
+  <div class="berita-container">
+    <div class="berita-header">
+      <span class="section-tag">Penawaran Menarik</span>
+      <h2>Promo Terbaru Ta Wan</h2>
+      <p>Pilih promo favorit Anda dan baca informasi lengkap mengenai periode serta syarat & ketentuan yang berlaku.</p>
+    </div>
+
+    <div class="news-grid">
+      <!-- Card 1 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Promo Spesial</span>
+          <img src="Gambar/gajian.jpeg" alt="Pay Day Fortune">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Waktunya Gajian, Serbu Pay Day Fortune di Ta Wan!</h3>
+          <p class="news-card-snippet">Rayakan momen gajian dengan memanjakan diri sendiri dan keluarga dengan paket hemat mulai Rp 179.000 untuk berdua hingga berempat.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-1')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Momen Hangat</span>
+          <img src="Gambar/natal.png" alt="Promo Natal">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Natal Lebih Istimewa dengan Kehangatan yang Menyatukan</h3>
+          <p class="news-card-snippet">Di setiap meja ada cerita yang dibagi, di setiap hidangan hangat ada rasa yang mendekatkan. Selamat Hari Natal untuk seluruh Sobat Ta Wan!</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-2')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Menu Baru</span>
+          <img src="Gambar/peanut.jpeg" alt="Peanut Series">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Kehangatan Tersendiri dari Varian Peanut Series</h3>
+          <p class="news-card-snippet">Nikmati sensasi gurih saus kacang autentik dalam Mie Goreng Nyemek, Mie Szechuan pedas, hingga Ayam Saus Kacang Oriental.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-3')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Claypot Series</span>
+          <img src="Gambar/promo_tahun_baru.jpg" alt="Ayam Charsiu Claypot">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Claypot Ayam Charsiu: Kelezatan Rasa yang Terkunci Sempurna</h3>
+          <p class="news-card-snippet">Ayam charsiu dimasak sempurna dalam mangkuk tembikar (claypot), menjaga suhu panas dan rasa manis gurih meresap hingga ke serat terdalam.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-4')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Dessert Love</span>
+          <img src="Gambar/image copy 2.png" alt="Dessert Manis">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Momen Manis Menikmati Dessert Autentik Ta Wan</h3>
+          <p class="news-card-snippet">Pudding lembut, hakau kukus, dan onde-onde renyah manis selalu siap menceriakan hari Anda saat rehat sejenak.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-5')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Menu Primadona</span>
+          <img src="Gambar/image copy.png" alt="Mie Nyemek Kacang">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Hangatnya Kuah Gurih Saus Kacang Kental yang Menggoda</h3>
+          <p class="news-card-snippet">Semangkuk Mie Nyemek Saus Kacang hangat dengan topping ayam empuk dan sayuran segar, solusi makan siang menenangkan.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-6')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Promo Spesial</span>
+          <img src="Gambar/image copy 3.png" alt="Pay Day Hoki">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Paket Hoki Pay Day Fortune: Makan Puas Makin Berhemat</h3>
+          <p class="news-card-snippet">Dapatkan kombinasi lauk pilihan, sayuran segar, dan nasi hangat dengan potongan harga istimewa di seluruh cabang reguler.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-7')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 8 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Nostalgia 29 Tahun</span>
+          <img src="Gambar/image copy 7.png" alt="Bubur Ta Wan">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Semarak 29 Tahun: Cerita Kehangatan Semangkuk Bubur Ta Wan</h3>
+          <p class="news-card-snippet">Mengenang awal mula Ta Wan di tahun 1996, kami menghadirkan program apresiasi spesial untuk seluruh pelanggan setia.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-8')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 9 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Cita Rasa Unik</span>
+          <img src="Gambar/image copy 8.png" alt="Udang Nanas Gurih">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Kejutan Rasa Tak Terduga: Udang Gurih Berpadu Asam Manis Nanas</h3>
+          <p class="news-card-snippet">Udang segar gurih berpadu dengan keasaman manis alami buah nanas segar, menciptakan rasa yang ringan, unik, dan menggugah selera.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-9')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+
+      <!-- Card 10 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <span class="news-badge">Paket Hemat</span>
+          <img src="Gambar/image copy 9.png" alt="Rice Bowl Ta Wan">
+        </div>
+        <div class="news-card-body">
+          <h3 class="news-card-title">Kenyang, Nikmat & Segar dalam Satu Paket Rice Bowl Ta Wan</h3>
+          <p class="news-card-snippet">Solusi praktis makan lezat di mana saja! Dapatkan bonus minuman segar untuk setiap pemesanan Rice Bowl favorit Anda.</p>
+          <button type="button" class="news-btn" onclick="openModal('popup-news-10')">Baca Selengkapnya &rarr;</button>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- DAFTAR POPUP MODALS LENGKAP & SPESIFIK -->
+  <!-- Modal 1 -->
+  <div class="popup" id="popup-news-1">
+    <div class="popup-content">
+      <h3>Waktunya Gajian: Pay Day Fortune Ta Wan 🥳</h3>
+      <p>Rayakan momen gajian dengan memanjakan diri sendiri dan orang-orang tersayang! Tak perlu bingung mencari tempat makan yang cocok untuk semua orang, Ta Wan hadir sebagai pilihan sempurna.
+
+Dengan memanfaatkan Promo Pay Day Fortune, gajian makin hoki, makan makin hemat. Paket spesial ini hadir mulai dari Rp 179.000* sudah mencakup sajian lauk favorit, hidangan sayur segar, dan berbagai menu pelengkap. Porsinya pas dinikmati berdua bahkan berempat!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-1')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="popup" id="popup-news-2">
+    <div class="popup-content">
+      <h3>Kehangatan Natal yang Menyatukan ✨</h3>
+      <p>Natal terasa jauh lebih istimewa ketika ditemani kehangatan keluarga. Di setiap meja Ta Wan, selalu ada cerita tulus yang dibagi dan tawa yang menghangatkan suasana.
+
+Di setiap hidangan panas yang tersaji, ada rasa cinta dan dedikasi koki kami untuk mendekatkan yang jauh dan mempererat yang dekat. Selamat Hari Natal untuk seluruh Sobat Ta Wan yang merayakannya!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-2')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="popup" id="popup-news-3">
+    <div class="popup-content">
+      <h3>Spesial Peanut Series: Hangat & Gurih</h3>
+      <p>Setiap suapan dari Peanut Series menghadirkan kehangatan tersendiri dengan gurihnya saus kacang pilihan dan manisnya kebersamaan.
+
+Nikmati pilihan menu spesial kami:
+🍜 Mie Goreng Nyemek Saus Kacang — kuah kacang kental hangat berpadu mi kenyal lembut nan mengenyangkan.
+🌶️ Mie Goreng Saus Kacang a la Szechuan — sensasi pedas khas yang menggigit berpadu aroma kacang gurih.
+🍗 Ayam Saus Kacang Oriental — potongan ayam juicy berlumur saus kacang lembut manis gurih.</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-3')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="popup" id="popup-news-4">
+    <div class="popup-content">
+      <h3>Claypot Ayam Charsiu Hangat Menggoda</h3>
+      <p>Daging ayam charsiu dimasak dengan kematangan sempurna, lalu disatukan dalam mangkuk claypot yang menjaga panas dan rasa tetap terkunci rapat.
+
+Saus merah karamelnya melekat halus, menghasilkan rasa manis gurih yang seimbang dengan jamur serta sayuran segar. Bukan sekadar lezat, hidangan ini menenangkan dan sempurna untuk momen bersantap di tempat (dine-in) di outlet pilihan Ta Wan.</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-4')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="popup" id="popup-news-5">
+    <div class="popup-content">
+      <h3>Manisnya Momen Dessert di Ta Wan</h3>
+      <p>Saat kamu menyantap dessert khas Ta Wan dan merasakan kelembutan serta kesegarannya yang luar biasa, jangan ragu untuk berbagi kebahagiaan tersebut kepada rekan dan keluarga!
+
+Tersedia aneka ragam pilihan puding sutra rasa almond, mangga, hingga cokelat kaya rasa yang disajikan dingin untuk menyegarkan kembali harimu.</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-5')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 6 -->
+  <div class="popup" id="popup-news-6">
+    <div class="popup-content">
+      <h3>Gurih Lembut Mie Nyemek Saus Kacang</h3>
+      <p>Hangatnya kuah berpadu dengan gurih kentalnya saus kacang khas racikan Ta Wan—menghadirkan kelezatan yang menenangkan di setiap suapan.
+
+Topping suwiran ayam yang empuk serta potongan sayur segar menciptakan kombinasi rasa yang pas di lidah. Tersedia untuk makan di tempat maupun pesan bawa pulang (take-away) di outlet Ta Wan terdekat!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-6')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 7 -->
+  <div class="popup" id="popup-news-7">
+    <div class="popup-content">
+      <h3>Paket Hemat Pay Day Fortune</h3>
+      <p>Kembali hadir paket favorit Sobat Ta Wan! Saat dompet baru terisi sehabis gajian, rayakan dengan hidangan bergizi dan mengenyangkan.
+
+Dapatkan paket lengkap dengan porsi dermawan khas mangkuk besar Ta Wan. Jangan lupa ajak sahabat, pasangan, dan keluarga untuk menikmati promo ini bersama-sama!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-7')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 8 -->
+  <div class="popup" id="popup-news-8">
+    <div class="popup-content">
+      <h3>Nostalgia 29 Tahun Kebersamaan Ta Wan</h3>
+      <p>Dimulai dari kehangatan seporsi bubur hangat di tahun 1996, Ta Wan kini telah melayani jutaan momen kebersamaan masyarakat Indonesia di lebih dari 90 gerai.
+
+Ikuti program nostalgia kebersamaan kami di media sosial @tawanrestaurant dan raih kesempatan mendapatkan berbagai voucher makan gratis serta traktiran hidangan spesial!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-8')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 9 -->
+  <div class="popup" id="popup-news-9">
+    <div class="popup-content">
+      <h3>Kejutan Rasa Udang & Nanas Asam Manis</h3>
+      <p>Ada kalanya rasa terbaik hadir dari perpaduan yang tak biasa. Udang segar pilihan yang gurih renyah dipadukan bersama potongan nanas matang yang manis dan sedikit asam.
+
+Menciptakan sensasi rasa berbeda di lidah—ringan, menyegarkan, dan menggugah selera makan. Sajian yang sangat pas untuk menghangatkan momen santap siang Anda hari ini.</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-9')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Modal 10 -->
+  <div class="popup" id="popup-news-10">
+    <div class="popup-content">
+      <h3>Paket Rice Bowl Praktis & Segar 🥰</h3>
+      <p>Solusi praktis dan cepat untuk menikmati kelezatan otentik Ta Wan di mana saja!
+
+Setiap pemesanan varian Rice Bowl Ta Wan favorit Anda via layanan pesan antar daring, nikmati kesegaran minuman dingin pendamping secara gratis. Hemat, lezat, dan mengenyangkan!</p>
+      <button class="close" type="button" onclick="closeModal('popup-news-10')">Tutup Jendela</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan">
+        <p>Restoran Chinese Food modern bersertifikat Halal dengan tradisi rasa sejak 1996, menghadirkan kehangatan di setiap momen kebersamaan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi Halaman</h4>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="menu.html">Menu Kami</a></li>
+          <li><a href="lokasi.html">Lokasi Outlet</a></li>
+          <li><a href="berita.html">Berita & Promo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Media Sosial & Info</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@tawanrestaurant.id?_r=1&_t=ZS-93fK8hDZHgv" target="_blank" rel="noopener">TikTok Ta Wan</a></li>
+          <li><a href="https://youtube.com/@tawanrestaurant?si=plVAySytzFN2A_2t" target="_blank" rel="noopener">YouTube Channel</a></li>
+          <li><a href="https://share.google/8XZzWOHXrTtc4MLb2" target="_blank" rel="noopener">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Ta Wan Restaurant. Dibuat dengan HTML, CSS, dan JavaScript murni.
+    </div>
+  </footer>
+
+  <!-- Interaktif Modal Script -->
+  <script>
+    function openModal(id) {
+      var modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add("show");
+      }
+    }
+
+    function closeModal(id) {
+      var modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove("show");
+      }
+    }
+
+    // Kompatibilitas fungsi bawaan openPopup dan closePopup
+    function openPopup() {
+      openModal("popup-news-1");
+    }
+
+    function closePopup() {
+      var popups = document.querySelectorAll(".popup");
+      popups.forEach(function(p) {
+        p.classList.remove("show");
+      });
+    }
+
+    // Tutup popup jika area latar belakang di luar konten diklik
+    window.addEventListener("click", function(event) {
+      if (event.target.classList.contains("popup")) {
+        event.target.classList.remove("show");
+      }
+    });
+
+    // Tutup dengan tombol Escape di keyboard
+    window.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closePopup();
+      }
+    });
+  </script>
+</body>
+</html>

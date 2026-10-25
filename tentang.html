@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami - Ta Wan Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Hero Header Tentang */
+    header.hero-banner {
+      background: linear-gradient(to top, rgba(17, 10, 10, 0.9), rgba(142, 22, 22, 0.7)), 
+                  url("Gambar/Ta-Wanfoto.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 420px;
+    }
+
+    /* Section Merah Khusus Kehangatan */
+    .section.section-merah {
+      background: linear-gradient(135deg, #7A1010 0%, #9E1919 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 30px rgba(107, 14, 14, 0.25);
+    }
+
+    .section.section-merah .teks h2 {
+      color: #FFFFFF;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .section.section-merah .teks p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .section.section-merah .section-tag {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Halal Highlight Badge */
+    .halal-badge-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #F4FAF5;
+      border: 1px solid #C2E2CB;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      margin-top: 15px;
+    }
+
+    .halal-badge-icon {
+      font-size: 24px;
+    }
+
+    .halal-badge-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A5928;
+    }
+
+    /* Grid Nilai Ta Wan */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 40px auto 20px auto;
+      padding: 0 20px;
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 30px 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-gold);
+    }
+
+    .value-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 18px auto;
+      background: var(--accent-gold-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #8E1616;
+      border: 1px solid rgba(198, 146, 52, 0.3);
+      transition: var(--transition);
+    }
+
+    .value-card:hover .value-icon {
+      background: var(--primary);
+      color: #FFFFFF;
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .value-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav>
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo-link">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan" />
+      </a>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html" class="active">Tentang</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="berita.html">Berita & Promo</a></li>
+        <li><a href="lokasi.html">Outlet</a></li>
+      </ul>
+      <a href="sudah login/login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Cerita & Filosofi</div>
+      <h1>Tahukah Anda Arti Ta Wan?</h1>
+      <h3>Nama <strong>Ta Wan</strong> berasal dari bahasa Mandarin <em>Dàwǎn (大碗)</em> yang berarti <strong>"Mangkuk Besar"</strong>. Sebuah komitmen mendalam untuk menyajikan hidangan berlimpah, lezat, dan berkualitas yang menghangatkan kebersamaan seluruh keluarga.</h3>
+    </div>
+  </header>
+
+  <!-- Konten Utama -->
+  <main class="main-content">
+    <!-- Value Cards / 3 Pilar -->
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🍲</div>
+        <h3>Dàwǎn (Mangkuk Besar)</h3>
+        <p>Porsi yang dermawan dan melimpah, dirancang untuk dinikmati bersama-sama di tengah meja makan penuh keakraban.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <h3>100% Halal Grade A</h3>
+        <p>Telah tersertifikasi halal resmi dari BPJPH dan MUI, menjamin setiap suapan hidangan lezat dan bebas dari keraguan.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">❤️</div>
+        <h3>Hangatkan Momen</h3>
+        <p>Citarasa masakan rumahan autentik yang membangkitkan nostalgia dan menyatukan cerita hangat keluarga Indonesia.</p>
+      </div>
+    </div>
+
+    <!-- Section 1: Sejarah & Ekspansi -->
+    <section class="section">
+      <div class="img-frame">
+        <img src="Gambar/image.png" alt="Restoran Ta Wan">
+      </div>
+      <div class="teks">
+        <span class="section-tag">Perjalanan Kami</span>
+        <h2>Restoran Chinese Paling Ekspansif di Indonesia</h2>
+        <p>Perjalanan kuliner Ta Wan dimulai dari sebuah restoran Chinese food yang terkenal akan buburnya yang gurih dan lezat pada tahun 1996, dengan gerai perdana di Mega Mall Pluit (sekarang Pluit Village).</p>
+        <p>Kini Ta Wan telah berkembang pesat menjadi jaringan restoran Chinese food ternama dengan jumlah outlet terbanyak di Indonesia, mencapai lebih dari 90 gerai yang tersebar di lebih dari 20 kota besar dan menengah dari Sabang sampai Merauke.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Kehangatan (Section Merah Elegan) -->
+    <section class="section section-merah">
+      <div class="img-frame">
+        <img src="Gambar/image copy 5.png" alt="Suasana Hangat Ta Wan">
+      </div>
+      <div class="teks">
+        <span class="section-tag">Citarasa Nostalgia</span>
+        <h2>Menghadirkan Kehangatan dalam Kebersamaan</h2>
+        <p>Selain bubur lezat dengan aneka pilihan topping yang telah menjadi legendaris, Ta Wan juga menyajikan aneka Chinese food klasik yang menjadi menu favorit dari generasi ke generasi.</p>
+        <p>Dipadukan dengan sentuhan citarasa lokal yang akrab di lidah masyarakat Indonesia, bersantap di Ta Wan menciptakan momen kebersamaan yang tulus dan tak terlupakan bersama orang-orang tercinta.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Sertifikasi Halal -->
+    <section class="section">
+      <div class="img-frame" style="background:#fff; display:flex; align-items:center; justify-content:center;">
+        <img src="Gambar/image copy 6.png" alt="Sertifikat Halal Ta Wan" style="object-fit:contain; max-height:90%;">
+      </div>
+      <div class="teks">
+        <span class="section-tag gold">Kualitas Terjamin</span>
+        <h2>Tenang, Sudah Halal Kok!</h2>
+        <p>Kenyamanan dan ketenangan pelanggan adalah prioritas utama kami. Ta Wan telah secara resmi mendapatkan sertifikat Halal Grade A dari LPPOM MUI dan BPJPH Republik Indonesia.</p>
+        <p>Seluruh bahan baku, rantai pasok, dan proses memasak dipastikan higienis, bersih, dan sesuai dengan standar kehalalan yang ketat. Nikmati setiap santapan nikmat tanpa sedikit pun rasa ragu!</p>
+        
+        <div class="halal-badge-box">
+          <span class="halal-badge-icon">✅</span>
+          <span class="halal-badge-text">Sertifikasi Halal Resmi MUI & BPJPH Grade A</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan">
+        <p>Restoran Chinese Food modern bersertifikat Halal dengan tradisi rasa sejak 1996, menghadirkan kehangatan di setiap momen kebersamaan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi Halaman</h4>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="menu.html">Menu Kami</a></li>
+          <li><a href="lokasi.html">Lokasi Outlet</a></li>
+          <li><a href="berita.html">Berita & Promo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Media Sosial & Info</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@tawanrestaurant.id?_r=1&_t=ZS-93fK8hDZHgv" target="_blank" rel="noopener">TikTok Ta Wan</a></li>
+          <li><a href="https://youtube.com/@tawanrestaurant?si=plVAySytzFN2A_2t" target="_blank" rel="noopener">YouTube Channel</a></li>
+          <li><a href="https://share.google/8XZzWOHXrTtc4MLb2" target="_blank" rel="noopener">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Ta Wan Restaurant. Dibuat dengan HTML, CSS, dan JavaScript murni.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Menu - Ta Wan Restaurant</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Hero Header Menu */
+    header.hero-banner {
+      background: linear-gradient(to top, rgba(17, 10, 10, 0.88), rgba(142, 22, 22, 0.65)), 
+                  url("Gambar/image copy 12.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 380px;
+    }
+
+    .menu-page-container {
+      max-width: 1240px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .filter-wrapper {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .filter-wrapper h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .filter-wrapper p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    /* Radio button filter styling */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    label.filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid #DFC9C9;
+      background: #FFFFFF;
+      color: var(--text-dark);
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    label.filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(142, 22, 22, 0.12);
+    }
+
+    input:checked + label.filter-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(142, 22, 22, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Menu Grid */
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+
+    .item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .item:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-lg);
+      border-color: #E2CECE;
+    }
+
+    .item-img-box {
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      background-color: #F8F5F0;
+      position: relative;
+    }
+
+    .item-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .item:hover .item-img-box img {
+      transform: scale(1.08);
+    }
+
+    .item-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(142, 22, 22, 0.85);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .item-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .item-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .item:hover .item-title {
+      color: var(--primary);
+    }
+
+    .item-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .item-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .item-status {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2E7D32;
+      background: #E8F5E9;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    /* PURE CSS FILTER LOGIC */
+    #all:checked ~ .menu .item {
+      display: flex;
+    }
+
+    #food:checked ~ .menu .item:not(.food) {
+      display: none !important;
+    }
+
+    #drink:checked ~ .menu .item:not(.drink) {
+      display: none !important;
+    }
+
+    #dessert:checked ~ .menu .item:not(.dessert) {
+      display: none !important;
+    }
+
+    #cemilan:checked ~ .menu .item:not(.cemilan) {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigasi -->
+  <nav>
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo-link">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan" />
+      </a>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="berita.html">Berita & Promo</a></li>
+        <li><a href="lokasi.html">Outlet</a></li>
+      </ul>
+      <a href="sudah login/login.html" class="nav-btn">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header Menu -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-badge">Citarasa Primadona</div>
+      <h1>Sajian Istimewa Ta Wan</h1>
+      <h3>Pilihan hidangan Chinese food klasik, bubur legendaris, aneka mie, dimsum lezat, serta minuman segar penutup hari Anda.</h3>
+    </div>
+  </header>
+
+  <!-- Kontainer Menu & Filter Radio CSS -->
+  <div class="menu-page-container">
+    <div class="filter-wrapper">
+      <span class="section-tag">Katalog Hidangan</span>
+      <h2>Pilih Kategori Menu</h2>
+      <p>Klik kategori di bawah untuk menyaring sajian favorit Anda</p>
+
+      <!-- Radio filter inputs -->
+      <div class="filter-buttons">
+        <input type="radio" name="f" id="all" checked>
+        <label for="all" class="filter-btn">🍽️ Semua Menu</label>
+
+        <input type="radio" name="f" id="food">
+        <label for="food" class="filter-btn">🍜 Makanan Utama</label>
+
+        <input type="radio" name="f" id="drink">
+        <label for="drink" class="filter-btn">🍹 Minuman Segar</label>
+
+        <input type="radio" name="f" id="dessert">
+        <label for="dessert" class="filter-btn">🍨 Dessert Manis</label>
+
+        <input type="radio" name="f" id="cemilan">
+        <label for="cemilan" class="filter-btn">🥟 Dimsum & Cemilan</label>
+
+        <!-- Daftar Menu Card Grid (Sibling dari Radio Inputs) -->
+        <div class="menu">
+          <!-- MAKANAN UTAMA -->
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-MIE-GORENG-AYAM.jpg" alt="Mie Ayam Goreng">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mie Goreng Ayam</h3>
+                <p class="item-desc">Mie kenyal digoreng harum khas wok oriental dengan potongan daging ayam gurih dan sayuran renyah.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Favorit</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-MIE-GORENG-ULANG-TAHUN.jpg" alt="Mie Goreng Ulang Tahun">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mie Goreng Ulang Tahun</h3>
+                <p class="item-desc">Sajian simbolis panjang umur bertabur telur puyuh merah dan suwiran ayam istimewa penuh kehangatan.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Legendaris</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-MIE-HONG-KONG-AYAM-REBUS.jpg" alt="Mie Hong Kong Ayam Rebus">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mie Hong Kong Ayam Rebus</h3>
+                <p class="item-desc">Tekstur mie tipis lentur khas Hong Kong disajikan dengan ayam rebus berbumbu minyak wijen harum.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Rekomendasi</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-MIE-HONG-KONG-PANGSIT-AYAM-1.jpg" alt="Mie Hong Kong Pangsit Ayam">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mie Hong Kong Pangsit Ayam</h3>
+                <p class="item-desc">Kombinasi klasik mie Hong Kong gurih disajikan bersama pangsit ayam lembut bercitarasa autentik.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Populer</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-NASI-GORENG-IKAN-ASIN-JAMBAL.jpg" alt="Nasi Goreng Ikan Asin Jambal">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Nasi Goreng Ikan Asin Jambal</h3>
+                <p class="item-desc">Aroma gurih khas ikan asin jambal roti berpadu sempurna dengan butiran nasi goreng beraroma sedap.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Best Seller</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-Sapo-Terong-Ayam-Cincang.jpg" alt="Sapo Terong Ayam Cincang">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Sapo Terong Ayam Cincang</h3>
+                <p class="item-desc">Terong ungu lembut berkuah kental gurih manis dengan limpahan daging ayam cincang hangat mengepul.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Claypot Hangat</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-SUP-KEPALA-IKAN-A-LA-HAKKA.jpg" alt="Sup Kepala Ikan Ala Hakka">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Sup Kepala Ikan Ala Hakka</h3>
+                <p class="item-desc">Kuah sup kaya rempah tradisional tradisi Hakka yang segar, gurih, dan menghangatkan jiwa.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Spesial Chef</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-SUP-PANGSIT-UDANG.jpg" alt="Sup Pangsit Udang">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Sup Pangsit Udang</h3>
+                <p class="item-desc">Kuah kaldu bening yang menenangkan dengan isian pangsit udang padat kenyal yang manis alami.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Segar</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item food">
+            <div class="item-img-box">
+              <span class="item-badge">Makanan</span>
+              <img src="Gambar/food-TAHU-SUTRA-GORENG-TELUR-ASIN.jpg" alt="Tahu Sutra Goreng Telur Asin">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Tahu Sutra Telur Asin</h3>
+                <p class="item-desc">Tahu sutra ekstra lembut berbalut adonan renyah bumbu kuning telur asin yang creamy gurih legit.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Primadona</span>
+                <span class="item-status">Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MINUMAN -->
+          <div class="item drink">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#0F6292;">Minuman</span>
+              <img src="Gambar/drink-ES-JERUK.jpg" alt="Es Jeruk Peras">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Es Jeruk Peras Murni</h3>
+                <p class="item-desc">Perasan buah jeruk segar kaya vitamin C yang manis alami dan menyegarkan dahaga.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Segar Alami</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item drink">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#0F6292;">Minuman</span>
+              <img src="Gambar/drink-ES-TEH.jpg" alt="Es Teh Daun Mint">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Es Teh Daun Mint</h3>
+                <p class="item-desc">Seduhan teh melati wangi dengan sentuhan kesegaran helai daun mint yang menyejukkan.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Favorit Meja</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item drink">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#0F6292;">Minuman</span>
+              <img src="Gambar/drink-GREEN-TEA.jpg" alt="Es Green Tea">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Es Green Tea Oriental</h3>
+                <p class="item-desc">Teh hijau kualitas pilihan dengan aroma harum yang menenangkan dan kaya antioksidan.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Sehat & Segar</span>
+                <span class="item-status">Dingin / Hangat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item drink">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#0F6292;">Minuman</span>
+              <img src="Gambar/drink-HOT-BLACK-COFFEE.jpg" alt="Hot Black Coffee">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Hot Black Coffee</h3>
+                <p class="item-desc">Kopi hitam panas dengan racikan biji kopi beraroma kuat dan cita rasa mantap khas kopitiam.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Hangat</span>
+                <span class="item-status">Panas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item drink">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#0F6292;">Minuman</span>
+              <img src="Gambar/drink-ICED-BLACK-COFFEE.jpg" alt="Iced Black Coffee">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Iced Black Coffee</h3>
+                <p class="item-desc">Kopi hitam segar dengan es batu melimpah untuk penyemangat aktivitas harian Anda.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Segar Mantap</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DESSERT -->
+          <div class="item dessert">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#B3541E;">Dessert</span>
+              <img src="Gambar/dessert-HAKAU.jpg" alt="Hakkau Manis">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Hakau Udang Kristal</h3>
+                <p class="item-desc">Kulit transparan lembut membungkus udang utuh segar nan renyah dengan aroma minyak wijen khas.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Primadona Dimsum</span>
+                <span class="item-status">Kukus Hangat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item dessert">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#B3541E;">Dessert</span>
+              <img src="Gambar/dessert-ONDE-ONDE-WIJEN-HITAM-1.jpg" alt="Onde Onde Wijen Hitam">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Onde-Onde Wijen Hitam</h3>
+                <p class="item-desc">Kulit ketan kenyal berlapis biji wijen renyah dengan isian pasta wijen hitam manis nan lembut.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Gurih Manis</span>
+                <span class="item-status">Goreng Hangat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item dessert">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#B3541E;">Dessert</span>
+              <img src="Gambar/dessert-PUDING-ALMOND-1.jpg" alt="Pudding Almond">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Pudding Almond Sutra</h3>
+                <p class="item-desc">Puding sutra lembut dengan aroma harum kacang almond khas oriental berpadu kuah manis segar.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Lembut Sejuk</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item dessert">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#B3541E;">Dessert</span>
+              <img src="Gambar/dessert-PUDING-COKELAT.jpg" alt="Pudding Cokelat">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Pudding Cokelat Belgia</h3>
+                <p class="item-desc">Kelezatan puding cokelat kaya rasa dengan sentuhan vla vanila creamy yang disukai segala usia.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Manis Manja</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item dessert">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#B3541E;">Dessert</span>
+              <img src="Gambar/dessert-PUDING-MANGGA.jpg" alt="Pudding Mangga">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Pudding Mangga Tropis</h3>
+                <p class="item-desc">Puding sari buah mangga matang yang manis dan wangi, menghadirkan kesegaran tropis nan manis.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Buah Asli</span>
+                <span class="item-status">Dingin</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CEMILAN -->
+          <div class="item cemilan">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#704F38;">Cemilan</span>
+              <img src="Gambar/cemilan-LUMPIA-GORENG-AYAM.jpg" alt="Lumpia Goreng Ayam">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Lumpia Goreng Ayam</h3>
+                <p class="item-desc">Kulit lumpia garing berpadu dengan cacahan daging ayam berbumbu dan saus cocolan asam manis.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Renyah Gurih</span>
+                <span class="item-status">Goreng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item cemilan">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#704F38;">Cemilan</span>
+              <img src="Gambar/cemilan-LUMPIA-KULIT-TAHU-GORENG.jpg" alt="Lumpia Kulit Tahu Goreng">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Lumpia Kulit Tahu Goreng</h3>
+                <p class="item-desc">Dibalut lembaran kulit kembang tahu tipis dengan isian ayam udang yang renyah di luar juicy di dalam.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Favorit Dimsum</span>
+                <span class="item-status">Goreng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item cemilan">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#704F38;">Cemilan</span>
+              <img src="Gambar/cemilan-LUMPIA-UDANG.jpg" alt="Lumpia Udang">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Lumpia Udang Spesial</h3>
+                <p class="item-desc">Kelembutan potongan udang segar berbalut kulit renyah emas yang cocok untuk camilan pembuka.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Renyah</span>
+                <span class="item-status">Goreng</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item cemilan">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#704F38;">Cemilan</span>
+              <img src="Gambar/cemilan-MANTAU-GORENG.jpg" alt="Mantau Goreng">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mantau Goreng Emas</h3>
+                <p class="item-desc">Roti mantau lembut digoreng hingga kuning keemasan, nikmat dicelupkan ke susu kental manis gurih.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Cocok Bersama</span>
+                <span class="item-status">Hangat</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item cemilan">
+            <div class="item-img-box">
+              <span class="item-badge" style="background:#704F38;">Cemilan</span>
+              <img src="Gambar/cemilan-MANTAU.jpg" alt="Mantau Kukus">
+            </div>
+            <div class="item-info">
+              <div>
+                <h3 class="item-title">Mantau Kukus Lembut</h3>
+                <p class="item-desc">Roti kukus putih nan empuk seperti kapas, pas dinikmati bersama kuah sup sapo atau susu manis.</p>
+              </div>
+              <div class="item-footer">
+                <span class="item-tag">★ Lembut Sehat</span>
+                <span class="item-status">Kukus</span>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- end .menu -->
+      </div> <!-- end .filter-buttons -->
+    </div> <!-- end .filter-wrapper -->
+  </div> <!-- end .menu-page-container -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="Gambar/logo.jpg" alt="Logo Ta Wan">
+        <p>Restoran Chinese Food modern bersertifikat Halal dengan tradisi rasa sejak 1996, menghadirkan kehangatan di setiap momen kebersamaan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi Halaman</h4>
+        <ul>
+          <li><a href="home.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="menu.html">Menu Kami</a></li>
+          <li><a href="lokasi.html">Lokasi Outlet</a></li>
+          <li><a href="berita.html">Berita & Promo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Media Sosial & Info</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@tawanrestaurant.id?_r=1&_t=ZS-93fK8hDZHgv" target="_blank" rel="noopener">TikTok Ta Wan</a></li>
+          <li><a href="https://youtube.com/@tawanrestaurant?si=plVAySytzFN2A_2t" target="_blank" rel="noopener">YouTube Channel</a></li>
+          <li><a href="https://share.google/8XZzWOHXrTtc4MLb2" target="_blank" rel="noopener">Official Website</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Ta Wan Restaurant. Dibuat dengan HTML, CSS, dan JavaScript murni.
+    </div>
+  </footer>
+</body>
+</html>
